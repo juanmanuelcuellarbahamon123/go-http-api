@@ -1,16 +1,32 @@
 package config
 
 import (
-	"database/sql"
-
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/jmoiron/sqlx"
 )
 
-func DBConnection() (db *sql.DB, err error) {
+var DBClient *sqlx.DB
+
+func DBConnection() {
+
 	driver := "mysql"
 	user := "root"
 	password := ""
 	database := "prueba"
-	db, err = sql.Open(driver, user+":"+password+"@/"+database)
-	return
+	host := "localhost"
+	port := "3306"
+
+	URI := user + ":" + password + "@tcp(" + host + ":" + port + ")" + "/" + database
+
+	db, err := sqlx.Open(driver, URI)
+
+	if err != nil {
+		panic(err.Error())
+	}
+	err = db.Ping()
+	if err != nil {
+		panic(err.Error())
+	}
+	DBClient = db
+
 }

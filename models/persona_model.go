@@ -1,7 +1,8 @@
 package models
 
 type Persona struct {
-	Nombre   string `json:nombre`
-	Apellido string `json:apellido`
-	Celular  string `json:celular`
+	ID       int    `json:"id_persona" db:"id_persona"`
+	Nombre   string `json:"nombre" db:"nombre"`
+	Apellido string `json:"apellido" db:"apellido"`
+	Celular  string `json:"celular" db:"celular"`
 }

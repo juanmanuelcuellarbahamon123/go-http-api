@@ -8,9 +8,8 @@ import (
 
 func main() {
 
-	router := gin.New()
+	router := gin.Default()
 
-	routes.AuthRoutes(router)
 	routes.UserRoutes(router)
 
 	router.Run(":4000")

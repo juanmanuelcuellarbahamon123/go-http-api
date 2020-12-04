@@ -10,7 +10,11 @@ func UserRoutes(route *gin.Engine) {
 
 	userGroup := route.Group("/user")
 	{
-		userGroup.GET("/", user.UserFunction)
+		userGroup.GET("/listar", user.ListarPersonas)
+		userGroup.GET("/listar/:id", user.ObtenerPersona)
+		userGroup.POST("/registro", user.CrearPersona)
+		userGroup.PUT("/editar/:id", user.ModificarPersona)
+		userGroup.DELETE("/eliminar/:id", user.EliminarPersona)
 	}
 
 }
