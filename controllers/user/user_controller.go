@@ -25,7 +25,7 @@ func CrearPersona(c *gin.Context) {
 	}
 
 	res, err := config.DBClient.Exec("INSERT INTO personas(nombre,apellido,celular) VALUES (?,?,?);",
-		reqBody.Nombre,
+		reqBody.Name,
 		reqBody.Apellido,
 		reqBody.Celular,
 	)
@@ -66,7 +66,7 @@ func ModificarPersona(c *gin.Context) {
 	}
 
 	res, err := config.DBClient.Exec("UPDATE personas SET nombre = ?, apellido = ?, celular = ? WHERE id_persona = ?;",
-		reqBody.Nombre,
+		reqBody.Name,
 		reqBody.Apellido,
 		reqBody.Celular,
 		id,
