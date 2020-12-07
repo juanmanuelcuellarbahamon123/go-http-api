@@ -10,6 +10,7 @@ func main() {
 
 	router := gin.Default()
 
+	routes.AuthRoutes(router)
 	routes.UserRoutes(router)
 
 	router.Run(":4000")
